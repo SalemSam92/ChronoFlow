@@ -1,0 +1,126 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Historique — ChronoFlow
+{% endblock %}
+
+{% block content %}
+	<div class="page-header">
+		<h1 class="page-title">Historique</h1>
+		<p class="page-subtitle">Consultez toutes vos sessions passées.</p>
+	</div>
+
+	<!-- Filtres -->
+	<section class="section">
+		<div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+			<select style="padding: var(--space-md) var(--space-lg); border: var(--border-light); border-radius: var(--radius-sm); background-color: var(--color-surface);">
+				<option>Tous les projets</option>
+				<option>Marketing</option>
+				<option>Plateforme</option>
+				<option>Documentation</option>
+			</select>
+
+			<select style="padding: var(--space-md) var(--space-lg); border: var(--border-light); border-radius: var(--radius-sm); background-color: var(--color-surface);">
+				<option>Toutes les catégories</option>
+				<option>Coding</option>
+				<option>Web</option>
+				<option>Communication</option>
+				<option>Idle</option>
+			</select>
+
+			<input type="date" style="padding: var(--space-md) var(--space-lg); border: var(--border-light); border-radius: var(--radius-sm); background-color: var(--color-surface);">
+
+			<button class="btn btn-primary">🔍 Appliquer</button>
+		</div>
+	</section>
+
+	<!-- Sessions groupées par date -->
+	<section class="section">
+		<div style="margin-bottom: var(--space-xxl);">
+			<h3 style="margin-bottom: var(--space-lg); color: var(--color-text-secondary);">Aujourd'hui</h3>
+
+			<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+				<div class="card">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div style="font-weight: 600; margin-bottom: var(--space-sm);">Rédaction de la page d'accueil</div>
+							<div style="display: flex; gap: var(--space-lg); font-size: 14px; color: var(--color-text-secondary);">
+								<span>📁 Marketing</span>
+								<span>⏱️ 45m</span>
+								<span>🕒 09:15 - 10:00</span>
+							</div>
+						</div>
+						<span class="badge badge-success">TERMINÉ</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div style="font-weight: 600; margin-bottom: var(--space-sm);">Tests d'intégration API</div>
+							<div style="display: flex; gap: var(--space-lg); font-size: 14px; color: var(--color-text-secondary);">
+								<span>📁 Plateforme</span>
+								<span>⏱️ 2h 15m</span>
+								<span>🕒 10:30 - 12:45</span>
+							</div>
+						</div>
+						<span class="badge badge-info">EN COURS</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-bottom: var(--space-xxl);">
+			<h3 style="margin-bottom: var(--space-lg); color: var(--color-text-secondary);">Hier</h3>
+
+			<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+				<div class="card">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div style="font-weight: 600; margin-bottom: var(--space-sm);">Refonte du dashboard client</div>
+							<div style="display: flex; gap: var(--space-lg); font-size: 14px; color: var(--color-text-secondary);">
+								<span>📁 ChronoFlow UI</span>
+								<span>⏱️ 3h 30m</span>
+								<span>🕒 09:00 - 12:30</span>
+							</div>
+						</div>
+						<span class="badge badge-success">TERMINÉ</span>
+					</div>
+				</div>
+
+				<div class="card">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div style="font-weight: 600; margin-bottom: var(--space-sm);">Correction de bugs prioritaires</div>
+							<div style="display: flex; gap: var(--space-lg); font-size: 14px; color: var(--color-text-secondary);">
+								<span>📁 ChronoFlow Core</span>
+								<span>⏱️ 1h 45m</span>
+								<span>🕒 14:00 - 15:45</span>
+							</div>
+						</div>
+						<span class="badge badge-success">TERMINÉ</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-bottom: var(--space-xxl);">
+			<h3 style="margin-bottom: var(--space-lg); color: var(--color-text-secondary);">Cette semaine</h3>
+
+			<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+				<div class="card">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div style="font-weight: 600; margin-bottom: var(--space-sm);">Réunion d'alignement trimestriel</div>
+							<div style="display: flex; gap: var(--space-lg); font-size: 14px; color: var(--color-text-secondary);">
+								<span>📁 Management</span>
+								<span>⏱️ 2h</span>
+								<span>🕒 10:00 - 12:00</span>
+							</div>
+						</div>
+						<span class="badge badge-info">RÉUNION</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

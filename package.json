@@ -1,0 +1,26 @@
+{
+  "name": "chronoflow",
+  "version": "1.0.0",
+  "description": "Time tracking application - ChronoFlow",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "NODE_ENV=development node app.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "time-tracking",
+    "productivity"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "twig": "^1.15.4"
+  },
+  "devDependencies": {
+    "eslint": "^10.3.0",
+    "prettier": "^3.0.0"
+  }
+}

@@ -1,0 +1,60 @@
+<nav class="sidebar">
+	<div class="sidebar-header">
+		<div class="sidebar-logo">⏱️ ChronoFlow</div>
+	</div>
+
+	<ul class="sidebar-nav">
+		<li class="sidebar-nav-item">
+			<a href="/dashboard" class="sidebar-nav-link {% if currentPage == 'dashboard' %}active{% endif %}">
+				<span class="sidebar-nav-icon">📊</span>
+				<span>Tableau de bord</span>
+			</a>
+		</li>
+
+		<li class="sidebar-nav-item">
+			<a href="/focus" class="sidebar-nav-link {% if currentPage == 'focus' %}active{% endif %}">
+				<span class="sidebar-nav-icon">🎯</span>
+				<span>Focus</span>
+			</a>
+		</li>
+
+		<li class="sidebar-nav-item">
+			<a href="/historique" class="sidebar-nav-link {% if currentPage == 'historique' %}active{% endif %}">
+				<span class="sidebar-nav-icon">📜</span>
+				<span>Historique</span>
+			</a>
+		</li>
+
+		<li class="sidebar-nav-item">
+			<a href="/statistiques" class="sidebar-nav-link {% if currentPage == 'statistiques' %}active{% endif %}">
+				<span class="sidebar-nav-icon">📈</span>
+				<span>Statistiques</span>
+			</a>
+		</li>
+
+		<li class="sidebar-nav-item">
+			<a href="/settings" class="sidebar-nav-link {% if currentPage == 'settings' %}active{% endif %}">
+				<span class="sidebar-nav-icon">⚙️</span>
+				<span>Paramètres</span>
+			</a>
+		</li>
+	</ul>
+
+	<div class="sidebar-cta">
+		<button class="btn btn-primary" style="width: 100%;">
+			<span>➕</span>
+			<span>Nouvelle session</span>
+		</button>
+	</div>
+
+	<div class="sidebar-footer">
+		<a href="#" class="sidebar-footer-link">
+			<span>❓</span>
+			<span>Aide</span>
+		</a>
+		<a href="#" class="sidebar-footer-link">
+			<span>📁</span>
+			<span>Archive</span>
+		</a>
+	</div>
+</nav>

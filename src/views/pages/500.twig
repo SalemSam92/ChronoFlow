@@ -1,0 +1,64 @@
+
+{% extends "layouts/base.twig" %}
+
+{% block title %}500 - Erreur serveur — ChronoFlow
+{% endblock %}
+
+{% block content %}
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <h1 class="error-title">Erreur serveur</h1>
+        <p class="error-message">{{ message }}</p>
+        <a href="/dashboard" class="btn btn-primary">← Retour au tableau de bord</a>
+    </div>
+{% endblock %}
+
+{# <html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>500 - Erreur serveur</title>
+		<link rel="stylesheet" href="/css/variables.css">
+		<link rel="stylesheet" href="/css/layout.css">
+		<link rel="stylesheet" href="/css/components.css">
+		<style>
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				background-color: var(--color-bg);
+			}
+			.error-container {
+				text-align: center;
+				padding: var(--space-xxxl);
+			}
+			.error-code {
+				font-size: 96px;
+				font-weight: 700;
+				color: var(--color-danger);
+				line-height: 1;
+				margin-bottom: var(--space-lg);
+			}
+			.error-title {
+				font-size: 32px;
+				font-weight: 700;
+				color: var(--color-text-primary);
+				margin-bottom: var(--space-md);
+			}
+			.error-message {
+				font-size: 16px;
+				color: var(--color-text-secondary);
+				margin-bottom: var(--space-xxl);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="error-container">
+			<div class="error-code">500</div>
+			<h1 class="error-title">Erreur serveur</h1>
+			<p class="error-message">{{ message }}</p>
+			<a href="/dashboard" class="btn btn-primary">← Retour au tableau de bord</a>
+		</div>
+	</body>
+</html> #}

@@ -1,0 +1,232 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Dashboard — ChronoFlow
+{% endblock %}
+
+{% block content %}
+	<div class="page-header">
+		<h1 class="page-title">Bonjour, Julian.</h1>
+		<p class="page-subtitle">Concentrez-vous sur vos 3 priorités du jour.</p>
+	</div>
+
+	<!-- Objectifs du jour -->
+	<section class="section">
+		<div class="section-header">
+			<h2 class="section-title">Objectifs du jour</h2>
+		</div>
+
+		<div class="card">
+			<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-md); background-color: var(--color-surface-soft); border-radius: var(--radius-sm);">
+					<input type="checkbox" style="accent-color: var(--color-primary);">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Documentation du Design System</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Définir le cycle de vie des composants</div>
+					</div>
+					<span class="badge badge-primary">PRIORITÉ HAUTE</span>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">2h</span>
+				</div>
+
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-md); background-color: var(--color-surface-soft); border-radius: var(--radius-sm);">
+					<input type="checkbox" style="accent-color: var(--color-primary);">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Audit de l'infrastructure</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Examiner la balance du serveur</div>
+					</div>
+					<span class="badge badge-warning">PRIORITÉ MOYENNE</span>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">1h 30m</span>
+				</div>
+
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-md); background-color: var(--color-surface-soft); border-radius: var(--radius-sm);">
+					<input type="checkbox" style="accent-color: var(--color-primary);">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Stratégie client T4</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Finaliser la feuille de route</div>
+					</div>
+					<span class="badge badge-success">EN COURS</span>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">45m</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Grille principale -->
+	<div
+		class="grid grid-2">
+		<!-- Colonne gauche -->
+		<div>
+			<!-- Progrès récents -->
+			<section class="section">
+				<div class="section-header">
+					<h2 class="section-title">Progrès récents</h2>
+				</div>
+
+				<div class="card">
+					<table style="width: 100%; border-collapse: collapse;">
+						<thead>
+							<tr style="border-bottom: var(--border-light);">
+								<th style="text-align: left; padding: var(--space-md); font-size: 12px; font-weight: 600; color: var(--color-text-secondary);">ACTIVITÉ</th>
+								<th style="text-align: left; padding: var(--space-md); font-size: 12px; font-weight: 600; color: var(--color-text-secondary);">PROJET</th>
+								<th style="text-align: left; padding: var(--space-md); font-size: 12px; font-weight: 600; color: var(--color-text-secondary);">TEMPS</th>
+								<th style="text-align: left; padding: var(--space-md); font-size: 12px; font-weight: 600; color: var(--color-text-secondary);">STATUT</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="border-bottom: var(--border-light);">
+								<td style="padding: var(--space-md);">Rédaction de la page d'accueil</td>
+								<td style="padding: var(--space-md);">Marketing</td>
+								<td style="padding: var(--space-md);">45m</td>
+								<td style="padding: var(--space-md);">
+									<span class="badge badge-success">TERMINÉ</span>
+								</td>
+							</tr>
+							<tr style="border-bottom: var(--border-light);">
+								<td style="padding: var(--space-md);">Tests d'intégration API</td>
+								<td style="padding: var(--space-md);">Plateforme</td>
+								<td style="padding: var(--space-md);">2h 15m</td>
+								<td style="padding: var(--space-md);">
+									<span class="badge badge-info">EN COURS</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</div>
+
+		<!-- Colonne droite -->
+		<div>
+			<!-- Calendrier -->
+			<section class="section">
+				<div class="section-header">
+					<h2 class="section-title">Octobre 2023</h2>
+				</div>
+
+				<div class="card">
+					<div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-sm); margin-bottom: var(--space-lg);">
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">L</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">M</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">M</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">J</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">V</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">S</div>
+						<div style="text-align: center; font-weight: 600; color: var(--color-text-secondary); font-size: 12px;">D</div>
+
+						{% for day in 1..31 %}
+							<div style="text-align: center; padding: var(--space-md); border-radius: var(--radius-sm); background-color: {% if day == 6 %}var(--color-primary-soft){% else %}transparent{% endif %}; color: {% if day == 6 %}var(--color-primary){% else %}var(--color-text-primary){% endif %}; font-weight: {% if day == 6 %}600{% else %}400{% endif %};">
+								{{ day }}
+							</div>
+						{% endfor %}
+					</div>
+
+					<div class="divider"></div>
+
+					<h4 style="margin-bottom: var(--space-md);">À suivre</h4>
+					<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+						<div style="padding: var(--space-md); background-color: var(--color-surface-soft); border-radius: var(--radius-sm); border-left: 4px solid var(--color-primary);">
+							<div style="font-weight: 600;">Bloc de focus interne</div>
+							<div style="font-size: 12px; color: var(--color-text-secondary);">10:00 - 12:00</div>
+						</div>
+						<div style="padding: var(--space-md); background-color: var(--color-surface-soft); border-radius: var(--radius-sm); border-left: 4px solid var(--color-secondary);">
+							<div style="font-weight: 600;">Sync hebdo</div>
+							<div style="font-size: 12px; color: var(--color-text-secondary);">13:30 - 14:30</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<!-- KPIs -->
+	<section class="section">
+		<div class="section-header">
+			<h2 class="section-title">Indicateurs clés</h2>
+		</div>
+
+		<div class="grid grid-3">
+			<div class="kpi-card">
+				<div class="kpi-label">Focus total</div>
+				<div class="kpi-value">124.5h</div>
+				<span class="kpi-trend positive">+12%</span>
+			</div>
+
+			<div class="kpi-card">
+				<div class="kpi-label">Tâches terminées</div>
+				<div class="kpi-value">342</div>
+				<span class="kpi-trend positive">+8%</span>
+			</div>
+
+			<div class="kpi-card">
+				<div class="kpi-label">Série actuelle</div>
+				<div class="kpi-value">14</div>
+				<span class="kpi-trend positive">Jours</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Graphiques -->
+	<section class="section">
+		<div class="section-header">
+			<h2 class="section-title">Analyse de productivité</h2>
+		</div>
+
+		<div class="grid grid-2">
+			<div class="card">
+				<h4>Heures de Focus</h4>
+				<div style="margin-top: var(--space-lg); display: flex; align-items: flex-end; gap: var(--space-md); height: 200px;">
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 40%, transparent 40%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Lun</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 65%, transparent 65%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Mar</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 45%, transparent 45%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Mer</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 78%, transparent 78%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Jeu</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 52%, transparent 52%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Ven</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 30%, transparent 30%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Sam</span>
+					</div>
+					<div style="flex: 1; background: linear-gradient(to top, var(--color-primary) 35%, transparent 35%); border-radius: var(--radius-sm) var(--radius-sm) 0 0; position: relative;">
+						<span style="position: absolute; bottom: -25px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--color-text-secondary);">Dim</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<h4>Répartition</h4>
+				<div style="margin-top: var(--space-lg); display: flex; align-items: center; gap: var(--space-lg);">
+					<svg width="180" height="180" style="flex-shrink: 0;">
+						<circle cx="90" cy="90" r="70" fill="none" stroke="var(--color-primary)" stroke-width="20" stroke-dasharray="175 440" stroke-dashoffset="0"/>
+						<circle cx="90" cy="90" r="70" fill="none" stroke="var(--color-secondary)" stroke-width="20" stroke-dasharray="110 440" stroke-dashoffset="-175"/>
+						<circle cx="90" cy="90" r="70" fill="none" stroke="var(--color-success)" stroke-width="20" stroke-dasharray="88 440" stroke-dashoffset="-285"/>
+						<circle cx="90" cy="90" r="70" fill="none" stroke="var(--color-disabled)" stroke-width="20" stroke-dasharray="67 440" stroke-dashoffset="-373"/>
+					</svg>
+					<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+						<div style="display: flex; align-items: center; gap: var(--space-md);">
+							<div style="width: 12px; height: 12px; background: var(--color-primary); border-radius: 50%;"></div>
+							<span style="font-size: 14px;">Coding 40%</span>
+						</div>
+						<div style="display: flex; align-items: center; gap: var(--space-md);">
+							<div style="width: 12px; height: 12px; background: var(--color-secondary); border-radius: 50%;"></div>
+							<span style="font-size: 14px;">Web 25%</span>
+						</div>
+						<div style="display: flex; align-items: center; gap: var(--space-md);">
+							<div style="width: 12px; height: 12px; background: var(--color-success); border-radius: 50%;"></div>
+							<span style="font-size: 14px;">Communication 20%</span>
+						</div>
+						<div style="display: flex; align-items: center; gap: var(--space-md);">
+							<div style="width: 12px; height: 12px; background: var(--color-disabled); border-radius: 50%;"></div>
+							<span style="font-size: 14px;">Idle 15%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

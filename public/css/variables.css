@@ -1,0 +1,199 @@
+/* ============================================
+   ChronoFlow — Design System CSS Variables
+   ============================================ */
+
+:root {
+  /* Couleurs Primaires */
+  --color-primary: #ff8123;
+  --color-primary-dark: #e76a11;
+  --color-primary-soft: #fff1e6;
+
+  /* Couleurs Secondaires */
+  --color-secondary: #4b8aff;
+  --color-secondary-soft: #e7f0ff;
+  --color-success: #2ebf7f;
+  --color-warning: #f2a54c;
+  --color-danger: #e23d3d;
+
+  /* Couleurs Neutres */
+  --color-bg: #f7f5f2;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f2ece6;
+  --color-border: #e3d8ce;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+  --color-disabled: #b7bac1;
+
+  /* Couleurs États */
+  --color-info: #4b8aff;
+  --color-surface-inverse: #111827;
+
+  /* Typographie */
+  --font-family-base: 'Inter', Arial, sans-serif;
+  --font-size-h1: 40px;
+  --font-size-h2: 32px;
+  --font-size-h3: 24px;
+  --font-size-h4: 20px;
+  --font-size-body: 16px;
+  --font-size-label: 14px;
+  --font-size-caption: 12px;
+
+  --font-weight-light: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.45;
+  --line-height-heading: 1.2;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
+
+  /* Rayons */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+
+  /* Ombres */
+  --shadow-soft: 0 12px 30px rgba(17, 25, 39, 0.05);
+  --shadow-strong: 0 24px 80px rgba(17, 25, 39, 0.08);
+
+  /* Bordures */
+  --border-light: 1px solid #e3d8ce;
+  --border-transparent: 1px solid transparent;
+
+  /* Icônes */
+  --color-icon-default: #4b5563;
+  --color-icon-active: #ff8123;
+  --color-icon-muted: #9ca3af;
+  --color-icon-size-lg: 20px;
+  --color-icon-size-md: 16px;
+  --color-icon-size-sm: 14px;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+}
+
+/* ============================================
+   Reset et Styles de base
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+}
+
+/* Typographie */
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-lg);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-md);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-md);
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 180ms ease-out;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Listes */
+ul,
+ol {
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+li {
+  margin-bottom: var(--space-sm);
+}
+
+/* Utilitaires de texte */
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Visibilité */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

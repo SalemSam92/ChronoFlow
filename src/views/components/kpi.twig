@@ -1,0 +1,9 @@
+<div class="kpi-card">
+	<div class="kpi-label">{{ label }}</div>
+	<div class="kpi-value">{{ value }}</div>
+	{% if trend %}
+		<span class="kpi-trend {% if trendPositive %}positive{% else %}negative{% endif %}">
+			{{ trend }}
+		</span>
+	{% endif %}
+</div>

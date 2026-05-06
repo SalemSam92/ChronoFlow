@@ -1,0 +1,29 @@
+<div class="card {% if compact %}compact{% endif %}">
+	{% if title or headerContent %}
+		<div class="card-header">
+			<h3 class="card-title">{{ title }}</h3>
+			{% if headerContent %}
+				{{ headerContent }}
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{% if body %}
+		<div class="card-body">
+			{{ body }}
+		</div>
+	{% endif %}
+
+	{% if footer or actions %}
+		<div class="card-footer">
+			{% if footer %}
+				{{ footer }}
+			{% endif %}
+			{% if actions %}
+				<div class="card-actions">
+					{{ actions }}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</div>

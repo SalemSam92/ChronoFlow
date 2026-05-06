@@ -1,0 +1,87 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}Focus — ChronoFlow
+{% endblock %}
+
+{% block content %}
+	<div
+		style="max-width: 800px; margin: 0 auto;">
+		<!-- Timer widget -->
+		<section class="section">
+			<div class="card" style="text-align: center; padding: var(--space-xxl);">
+				<span class="badge badge-primary" style="margin-bottom: var(--space-lg);">Session de Focus active</span>
+
+				<div style="font-size: 72px; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-md);">
+					24:42
+				</div>
+
+				<p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: var(--space-xxl);">
+					Session en cours depuis 1h 30m
+				</p>
+
+				<div style="display: flex; gap: var(--space-lg); justify-content: center; margin-bottom: var(--space-xxl);">
+					<button class="btn btn-secondary btn-lg">⏸️ Pause</button>
+					<button class="btn btn-danger btn-lg">⏹️ Terminer</button>
+				</div>
+
+				<div style="border-top: var(--border-light); padding-top: var(--space-lg);">
+					<p style="font-size: 12px; color: var(--color-text-secondary);">Activité actuelle :
+						<strong>Coding</strong>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Tâches de focus -->
+		<section class="section">
+			<div class="section-header">
+				<h2 class="section-title">Tâches actuelles</h2>
+			</div>
+
+			<div style="display: flex; flex-direction: column; gap: var(--space-md);">
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-lg); background-color: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+					<input type="checkbox" style="accent-color: var(--color-primary); cursor: pointer;">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Implémentation du timer en temps réel</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Connecter les websockets pour les mises à jour en direct</div>
+					</div>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">1h 30m</span>
+				</div>
+
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-lg); background-color: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+					<input type="checkbox" style="accent-color: var(--color-primary); cursor: pointer;">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Tests unitaires du détecteur d'inactivité</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Couvrir les cas limites (souris, clavier, tactile)</div>
+					</div>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">45m</span>
+				</div>
+
+				<div style="display: flex; gap: var(--space-md); padding: var(--space-lg); background-color: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+					<input type="checkbox" style="accent-color: var(--color-primary); cursor: pointer;">
+					<div style="flex: 1;">
+						<div style="font-weight: 600;">Révision du design système</div>
+						<div style="font-size: 14px; color: var(--color-text-secondary);">Documenter les variations de composants</div>
+					</div>
+					<span style="font-weight: 600; color: var(--color-text-secondary);">30m</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Objectif journalier -->
+		<section class="section">
+			<div class="card">
+				<h4>Objectif du jour</h4>
+				<div style="margin-top: var(--space-lg);">
+					<div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+						<div style="flex: 1; height: 8px; background: var(--color-surface-soft); border-radius: 4px; overflow: hidden;">
+							<div style="width: 80%; height: 100%; background: var(--color-primary); border-radius: 4px;"></div>
+						</div>
+						<span style="font-weight: 600;">4/5</span>
+					</div>
+					<p style="font-size: 14px; color: var(--color-text-secondary);">4 sessions de focus complétées sur 5 prévues</p>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}

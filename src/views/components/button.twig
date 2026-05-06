@@ -1,0 +1,6 @@
+<button class="btn btn-{{ variant | default('primary') }} {% if size %}btn-{{ size }}{% endif %} {% if disabled %}disabled{% endif %}" {% if disabled %} disabled {% endif %}>
+	{% if icon %}
+		<span class="icon">{{ icon }}</span>
+	{% endif %}
+	<span>{{ label }}</span>
+</button>
