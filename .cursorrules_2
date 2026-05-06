@@ -1,0 +1,150 @@
+# .cursorrules — Time Tracker (Node.js / Express / Prisma / Twig)
+# Référence humaine complète : voir ARCHITECTURE.md
+
+# ─────────────────────────────────────────
+# STACK
+# ─────────────────────────────────────────
+
+- Node.js v24.15.0 | Express v4.19.2 | Prisma v7.4.2 | Twig v3.8.0 | MySQL v8.4.0
+- JavaScript ES2022+, strict mode, un seul style de modules (ESM ou CJS, pas les deux)
+- Validation : Joi ou Zod — un seul choix par projet, jamais mélangé
+- Logger : Winston ou Pino — jamais console.log
+
+
+# ─────────────────────────────────────────
+# STRUCTURE DES DOSSIERS
+# ─────────────────────────────────────────
+
+src/
+├── config/         → prisma.js (singleton), app.js, env.js
+├── routes/         → déclaration des routes uniquement
+├── controllers/    → orchestration req → service → res
+├── services/       → toute la logique métier
+├── repositories/   → tous les accès Prisma
+├── middlewares/    → auth, validation, errorHandler
+├── validators/     → schémas Joi/Zod par ressource
+├── utils/          → fonctions pures sans effets de bord
+├── events/         → SSE / EventEmitter pour le temps réel
+└── views/          → templates Twig (layouts/, pages/, components/, partials/)
+
+prisma/             → schema.prisma, migrations/
+tests/              → unit/, integration/
+
+
+# ─────────────────────────────────────────
+# CONVENTIONS DE NOMMAGE
+# ─────────────────────────────────────────
+
+- Fichiers          : kebab-case            → time-entry.service.js
+- Classes           : PascalCase            → TimeEntryRepository
+- Fonctions/vars    : camelCase             → getActiveSession
+- Constantes        : SCREAMING_SNAKE_CASE  → MAX_IDLE_DURATION
+- Routes API        : kebab-case, pluriel   → /api/v1/time-entries
+- Templates Twig    : kebab-case            → timer-widget.html.twig
+- Modèles Prisma    : PascalCase singulier  → TimeEntry, UserSession
+- Champs Prisma     : camelCase, + id / createdAt / updatedAt obligatoires
+
+
+# ─────────────────────────────────────────
+# RÈGLES D'ARCHITECTURE
+# ─────────────────────────────────────────
+
+- Flux obligatoire : route → controller → service → repository
+- Aucun appel Prisma en dehors de repositories/
+- Aucune logique métier dans controllers, routes ou templates
+- Les utils sont des fonctions pures (aucune dépendance externe)
+- Le temps réel passe exclusivement par events/ (SSE ou WebSocket)
+- PrismaClient : singleton dans src/config/prisma.js, jamais réinstancié
+
+
+# ─────────────────────────────────────────
+# API
+# ─────────────────────────────────────────
+
+- Préfixe : /api/v1/ | Ressources au pluriel
+- Codes HTTP : 200, 201, 204, 400, 401, 403, 404, 409, 422, 500
+- Réponse succès : { success: true, data: {}, meta?: {} }
+- Réponse erreur : { success: false, error: { code, message, details? } }
+- Toutes les routes async wrappées dans asyncHandler()
+- Validation via middleware avant d'atteindre le controller
+
+
+# ─────────────────────────────────────────
+# BASE DE DONNÉES
+# ─────────────────────────────────────────
+
+- Transactions Prisma obligatoires pour toute opération multi-tables
+- Champs sensibles (tokens, hash) exclus des select par défaut
+- Migrations nommées explicitement : prisma migrate dev --name <nom>
+- Jamais prisma db push sur un environnement partagé
+
+
+# ─────────────────────────────────────────
+# TESTS
+# ─────────────────────────────────────────
+
+- 1 fichier de test par fichier source → time-entry.service.test.js
+- Structure AAA : Arrange / Act / Assert
+- Nommage : "should [comportement] when [condition]"
+- Générer le test en même temps que le fichier source
+
+
+# ─────────────────────────────────────────
+# GIT
+# ─────────────────────────────────────────
+
+Conventional Commits uniquement :
+  feat: | fix: | refactor: | chore: | docs: | test: | perf: | style:
+Exemple : feat(tracker): add idle detection based on keyboard inactivity
+
+
+# ─────────────────────────────────────────
+# INTERDICTIONS ABSOLUES
+# ─────────────────────────────────────────
+
+- console.log / console.error → remplacer par le logger
+- Logique métier hors services/
+- Appel Prisma hors repositories/
+- Secret ou credential dans le code source
+- Code mort, commenté ou dupliqué
+- Mélange ESM + CJS
+- Stack trace Prisma dans les réponses API en production
+- try/catch répété dans les routes → utiliser asyncHandler
+
+
+# ─────────────────────────────────────────
+# RÈGLES DE GÉNÉRATION OBLIGATOIRES
+# ─────────────────────────────────────────
+
+Quand Cursor génère un fichier :
+
+1. PLACEMENT
+   - Identifier la responsabilité du fichier → le placer dans le bon dossier
+   - Un fichier = une seule responsabilité
+   - Max 150 lignes (hors tests), max 30 lignes par fonction
+
+2. STRUCTURE MINIMALE PAR TYPE
+   - route      → importer router, déclarer les endpoints, exporter router
+   - controller → importer le service, appeler asyncHandler, renvoyer la réponse formatée
+   - service    → JSDoc sur chaque méthode, logique métier uniquement, appeler repository
+   - repository → JSDoc, Prisma uniquement, aucune logique conditionnelle métier
+   - validator  → exporter un schéma Joi/Zod nommé (ex: createSessionSchema)
+   - util       → fonctions pures exportées nommément, zéro effet de bord
+
+3. ACCOMPAGNEMENT AUTOMATIQUE
+   - Tout nouveau service  → générer aussi repositories/<nom>.repository.js
+   - Tout nouveau endpoint → générer aussi validators/<ressource>.validator.js
+   - Tout nouveau fichier source → générer aussi tests/unit/<nom>.test.js
+
+4. COMPLÉTION ET MODIFICATION
+   - Toute fonction async dans une route → envelopper dans asyncHandler()
+   - Toute manipulation de req.body/params → vérifier qu'un validator est branché
+   - Toute modification de schema.prisma → rappeler de créer une migration nommée
+   - Toute logique dupliquée (2x+) → extraire dans utils/ ou un service partagé
+
+5. CONTEXTE MÉTIER
+   - Session    : période de travail (début, fin, statut : active | paused | closed)
+   - TimeEntry  : segment catégorisé (coding | web | communication | idle)
+   - Idle       : détecté via événements système, persisté en base
+   - Agrégations (par catégorie / jour / projet) → calculées dans les services
+   - Temps réel : SSE via events/, état du timer toujours persisté en base
