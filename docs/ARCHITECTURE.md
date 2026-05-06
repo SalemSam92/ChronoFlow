@@ -1,4 +1,4 @@
-# ARCHITECTURE.md — Time Tracker
+# ARCHITECTURE.md — ChronoFlow
 > Document de référence interne. Mis à jour à chaque évolution structurelle du projet.
 
 ---
@@ -7,16 +7,16 @@
 
 | Couche | Technologie | Version |
 |---|---|---|
-| Runtime | Node.js (Krypton LTS) | 24.15.0 |
-| Framework HTTP | Express | 4.19.2 |
-| ORM | Prisma | 7.4.2 |
-| Templates | Twig.js | 3.8.0 |
-| Base de données | MySQL | 8.4.0 GA |
+| Runtime | Node.js (Krypton LTS) | 25.9.0 |
+| Framework HTTP | Express | 5.2.1 |
+| ORM | Prisma | 7.8.0 |
+| Templates | Twig.js | 3.0.0 |
+| Base de données | MySQL | 8.4.8  |
 | Frontend | HTML5 / CSS3 / JS vanilla | ES2022+ |
 | Validation | Joi **ou** Zod (choisir une fois) | — |
 | Logger | Winston ou Pino | — |
-| Tests | Jest + Supertest | 29+ |
-| Linter | ESLint (Airbnb-base) + Prettier | — |
+| Tests | Jest + Supertest | 30.3.0. |
+| Linter | ESLint (Airbnb-base) + Prettier | 10.3.0. |
 
 **Normes générales**
 - `'use strict'` activé dans tous les fichiers
